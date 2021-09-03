@@ -11,19 +11,19 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from .. import app, ADMIN_CHATS, ForceDocumentFlag
 from .leech import initiate_torrent
 
-rsslink = list(filter(lambda x: x, map(str, os.environ.get("NYAA_RSS_LINKS", "https://nyaa.si/?page=rss&c=0_0&f=0&u=AkihitoSubsWeeklies").split(' '))))
+rsslink = list(filter(lambda x: x, map(str, os.environ.get("NYAA_RSS_LINKS", "https://nyaa.si/?page=rss&c=0_0&f=0&u=SmallSizedAnimations").split(' '))))
 
 if os.environ.get('DB_URL'):
     DB_URL = os.environ.get('DB_URL')
     _MGCLIENT: AgnosticClient = AsyncIOMotorClient(DB_URL)
-    _DATABASE: AgnosticDatabase = _MGCLIENT["ASWFeed"]
+    _DATABASE: AgnosticDatabase = _MGCLIENT["SSAFeed"]
     def get_collection(name: str) -> AgnosticCollection:
         """ Create or Get Collection from your database """
         return _DATABASE[name]
     def _close_db() -> None:
         _MGCLIENT.close()
     
-    A = get_collection('ASW_TITLE')
+    A = get_collection('feed')
     
     async def rss_parser():
         cr = []
