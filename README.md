@@ -75,6 +75,9 @@ This is a telegram bot writen with pyrogram for leeching files on the internet t
 - Advanced ytdl
 - Docker support.
 
+
+heroku.com/deploy
+
 ## Bot Commands
 
 **Leech Module**
